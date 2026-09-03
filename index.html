@@ -3,425 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>توصيات دخول | أسهم أمريكية 1$–5$ جاهزة للارتفاع</title>
-  <meta name="description" content="أسهم أمريكية بين 1 و5 دولار مرتبة حسب جاهزية الدخول وتوقع الارتفاع" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>توصيات دخول حلال | أسهم أمريكية 1$–5$</title>
+  <meta name="description" content="أسهم أمريكية بين 1 و5 دولار حلال مرتبة حسب جاهزية الدخول" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0a0e13;
-      --card: #12181f;
-      --border: #1e2836;
-      --gold: #d4af37;
-      --gold-l: #f0d78c;
-      --green: #22c55e;
-      --red: #ef4444;
-      --blue: #3b82f6;
-      --text: #eef2f7;
-      --muted: #8b9bb0;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      min-height: 100vh;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
-
-    header {
-      background: rgba(10,14,19,0.95);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 0;
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(12px);
-    }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; flex-wrap: wrap;
-    }
-    .logo {
-      font-weight: 800; font-size: 1.2rem; color: var(--gold);
-      text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
-    }
-    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
-    .nav a:hover { color: var(--gold); }
-
-    .hero { text-align: center; padding: 2rem 0 1rem; }
-    .hero h1 {
-      font-size: clamp(1.45rem, 4vw, 2rem); font-weight: 800;
-      background: linear-gradient(90deg, var(--gold-l), var(--gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 0.4rem;
-    }
-    .hero p { color: var(--muted); font-size: 0.95rem; max-width: 580px; margin: 0 auto; }
-
-    .filters {
-      display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center;
-      margin: 1.1rem 0 1.35rem;
-    }
-    .filter-btn {
-      background: var(--card); border: 1px solid var(--border);
-      color: var(--muted); padding: 0.42rem 0.95rem; border-radius: 999px;
-      font-family: inherit; font-weight: 600; font-size: 0.86rem; cursor: pointer;
-      transition: 0.2s;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: rgba(212,175,55,0.15); border-color: rgba(212,175,55,0.45);
-      color: var(--gold);
-    }
-
-    .stats-bar {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
-      gap: 0.7rem; margin-bottom: 1.25rem;
-    }
-    .stat-box {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 0.85rem; text-align: center;
-    }
-    .stat-box span { display: block; font-size: 0.75rem; color: var(--muted); }
-    .stat-box strong { font-size: 1.15rem; color: var(--gold-l); }
-
-    .score-box {
-      background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(34,197,94,0.03));
-      border: 1px solid rgba(34,197,94,0.3);
-      border-radius: 14px; padding: 1rem 1.2rem; margin-bottom: 1.25rem;
-      font-size: 0.9rem; color: #86efac;
-    }
-    .score-box strong { color: var(--green); }
-
-    .table-wrap {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; overflow: hidden; margin-bottom: 1.75rem;
-    }
-    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    th {
-      background: #0f141b; color: var(--muted); font-weight: 700;
-      text-align: right; padding: 0.8rem 0.9rem; font-size: 0.8rem;
-      border-bottom: 1px solid var(--border);
-    }
-    td {
-      padding: 0.85rem 0.9rem; border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(255,255,255,0.025); }
-    tr.ready td { background: rgba(34,197,94,0.04); }
-
-    .rank {
-      width: 34px; height: 34px; border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.82rem;
-      background: linear-gradient(135deg, var(--gold), #b8941f);
-      color: #0a0e13;
-    }
-    .rank.top { box-shadow: 0 0 14px rgba(34,197,94,0.4); background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; }
-    .sym { font-weight: 800; color: var(--gold-l); font-size: 1rem; }
-    .name { color: var(--muted); font-size: 0.8rem; display: block; }
-    .price { font-weight: 700; font-size: 1.02rem; }
-    .chg {
-      font-weight: 700; padding: 0.22rem 0.5rem; border-radius: 7px; font-size: 0.86rem;
-    }
-    .chg.up { background: rgba(34,197,94,0.15); color: var(--green); }
-    .chg.down { background: rgba(239,68,68,0.15); color: var(--red); }
-    .score {
-      font-weight: 800; font-size: 1rem;
-    }
-    .score.high { color: var(--green); }
-    .score.mid { color: var(--gold); }
-    .score.low { color: var(--muted); }
-    .vol { font-variant-numeric: tabular-nums; }
-    .mcap { color: var(--muted); font-size: 0.85rem; }
-
-    .badge {
-      display: inline-block; font-size: 0.68rem; font-weight: 700;
-      padding: 0.15rem 0.45rem; border-radius: 5px; margin-right: 0.25rem;
-    }
-    .badge.entry {
-      background: rgba(34,197,94,0.2); color: #4ade80;
-      border: 1px solid rgba(34,197,94,0.35);
-    }
-    .badge.watch {
-      background: rgba(234,179,8,0.15); color: #facc15;
-    }
-    .badge.avoid {
-      background: rgba(239,68,68,0.12); color: #f87171;
-    }
-
-    .how {
-      padding: 1.25rem 0 0.5rem;
-    }
-    .how h2 {
-      font-size: 1.25rem; font-weight: 800; margin-bottom: 0.7rem; color: var(--gold-l);
-    }
-    .how-grid { display: grid; gap: 0.65rem; }
-    .how-item {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 0.95rem 1.05rem; font-size: 0.9rem; color: var(--muted);
-    }
-    .how-item strong { color: var(--gold); }
-
-    .disclaimer {
-      background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.25);
-      border-radius: 12px; padding: 1.05rem; font-size: 0.85rem; color: #fca5a5;
-      margin: 1.5rem 0;
-    }
-    .disclaimer strong { color: #f87171; }
-
-    footer {
-      border-top: 1px solid var(--border); padding: 1.4rem 0;
-      text-align: center; color: var(--muted); font-size: 0.84rem;
-    }
-
-    .loading { text-align: center; padding: 2.5rem; color: var(--muted); }
-    .spinner {
-      width: 34px; height: 34px; border: 3px solid var(--border);
-      border-top-color: var(--gold); border-radius: 50%;
-      animation: spin 0.8s linear infinite; margin: 0 auto 0.9rem;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    @media (max-width: 700px) {
-      .hide-sm { display: none; }
-      td, th { padding: 0.65rem 0.55rem; }
-    }
+    :root { --bg:#0a0e13; --card:#12181f; --border:#1e2836; --gold:#d4af37; --gold-l:#f0d78c; --green:#22c55e; --red:#ef4444; --text:#eef2f7; --muted:#8b9bb0; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;min-height:100vh}
+    .container{max-width:1100px;margin:0 auto;padding:0 1rem}
+    header{background:rgba(10,14,19,.95);border-bottom:1px solid var(--border);padding:.9rem 0;position:sticky;top:0;z-index:50;backdrop-filter:blur(12px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .logo{font-weight:800;font-size:1.15rem;color:var(--gold);text-decoration:none}
+    .nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.9rem}
+    .hero{text-align:center;padding:1.75rem 0 .9rem}
+    .hero h1{font-size:clamp(1.4rem,4vw,1.95rem);font-weight:800;background:linear-gradient(90deg,var(--gold-l),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.35rem}
+    .hero p{color:var(--muted);font-size:.92rem;max-width:600px;margin:0 auto}
+    .filters{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1rem 0 1.2rem}
+    .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.4rem .9rem;border-radius:999px;font-family:inherit;font-weight:600;font-size:.84rem;cursor:pointer}
+    .filter-btn.active,.filter-btn:hover{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.45);color:var(--gold)}
+    .stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.65rem;margin-bottom:1.1rem}
+    .stat-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.8rem;text-align:center}
+    .stat-box span{display:block;font-size:.72rem;color:var(--muted)}
+    .stat-box strong{font-size:1.1rem;color:var(--gold-l)}
+    .halal-box{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(34,197,94,.02));border:1px solid rgba(34,197,94,.28);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.1rem;font-size:.86rem;color:#86efac}
+    .score-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.25);border-radius:12px;padding:.85rem 1.05rem;margin-bottom:1.1rem;font-size:.86rem;color:#93c5fd}
+    .table-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
+    table{width:100%;border-collapse:collapse;font-size:.88rem}
+    th{background:#0f141b;color:var(--muted);font-weight:700;text-align:right;padding:.75rem .85rem;font-size:.78rem;border-bottom:1px solid var(--border)}
+    td{padding:.8rem .85rem;border-bottom:1px solid var(--border);vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tr.ready td{background:rgba(34,197,94,.04)}
+    .rank{width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;background:linear-gradient(135deg,var(--gold),#b8941f);color:#0a0e13}
+    .rank.top{background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff}
+    .sym{font-weight:800;color:var(--gold-l)}
+    .name{color:var(--muted);font-size:.78rem;display:block}
+    .chg{font-weight:700;padding:.2rem .45rem;border-radius:6px;font-size:.84rem}
+    .chg.up{background:rgba(34,197,94,.15);color:var(--green)}
+    .chg.down{background:rgba(239,68,68,.15);color:var(--red)}
+    .score.high{color:var(--green)}.score.mid{color:var(--gold)}.score.low{color:var(--muted)}
+    .badge{display:inline-block;font-size:.66rem;font-weight:700;padding:.12rem .4rem;border-radius:5px}
+    .badge.entry{background:rgba(34,197,94,.2);color:#4ade80;border:1px solid rgba(34,197,94,.35)}
+    .badge.watch{background:rgba(234,179,8,.15);color:#facc15}
+    .badge.avoid{background:rgba(239,68,68,.12);color:#f87171}
+    .badge.halal{background:rgba(34,197,94,.12);color:#86efac;margin-right:.25rem}
+    .how{padding:1.1rem 0}.how h2{font-size:1.2rem;font-weight:800;margin-bottom:.65rem;color:var(--gold-l)}
+    .how-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.9rem 1rem;font-size:.88rem;color:var(--muted);margin-bottom:.6rem}
+    .disclaimer{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:1rem;font-size:.84rem;color:#fca5a5;margin:1.4rem 0}
+    footer{border-top:1px solid var(--border);padding:1.3rem 0;text-align:center;color:var(--muted);font-size:.82rem}
+    .loading{text-align:center;padding:2.2rem;color:var(--muted)}
+    .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto .8rem}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:700px){.hide-sm{display:none}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav class="nav">
-        <a href="#" class="logo">🚀 توصيات دخول 1$–5$</a>
-        <div style="display:flex;gap:1.2rem;">
-          <a href="#list">القائمة</a>
-          <a href="#how">معايير الدخول</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
+  <header><div class="container"><nav class="nav">
+    <a href="#" class="logo">🕌 توصيات دخول حلال 1$–5$</a>
+    <div style="display:flex;gap:1.1rem"><a href="#list">القائمة</a><a href="#how">المعايير</a></div>
+  </nav></div></header>
   <main class="container">
-    <div class="hero">
-      <h1>أسهم جاهزة للتوصية والدخول</h1>
-      <p>ترتيب حسب توقع الارتفاع: زخم صاعد + سيولة قوية = أولوية دخول</p>
-    </div>
-
+    <div class="hero"><h1>أسهم أمريكية حلال · جاهزة للدخول</h1>
+    <p>نطاق 1$–5$ · فلتر حلال أساسي · ترتيب حسب توقع الارتفاع</p></div>
     <div class="filters">
       <button class="filter-btn active" data-sort="ready">جاهز للدخول ★</button>
       <button class="filter-btn" data-sort="change">الأعلى ارتفاعاً</button>
       <button class="filter-btn" data-sort="volume">الأعلى سيولة</button>
       <button class="filter-btn" data-sort="price">الأرخص</button>
     </div>
-
     <div class="stats-bar">
-      <div class="stat-box"><span>عدد الأسهم</span><strong id="statCount">—</strong></div>
+      <div class="stat-box"><span>أسهم حلال</span><strong id="statCount">—</strong></div>
       <div class="stat-box"><span>توصيات دخول</span><strong id="statReady" style="color:var(--green)">—</strong></div>
       <div class="stat-box"><span>أقوى زخم</span><strong id="statBest" style="color:var(--green)">—</strong></div>
-      <div class="stat-box"><span>آخر تحديث</span><strong id="statTime" style="font-size:0.92rem">—</strong></div>
+      <div class="stat-box"><span>آخر تحديث</span><strong id="statTime" style="font-size:.9rem">—</strong></div>
     </div>
-
-    <div class="score-box">
-      <strong>درجة الجاهزية (Ready Score):</strong>
-      تعتمد على نسبة الارتفاع اليومي + حجم التداول.
-      كلما ارتفعت الدرجة → السهم أقرب لتوصية دخول (زخم + سيولة).
-    </div>
-
+    <div class="halal-box"><strong>فلتر حلال أساسي:</strong> استبعاد البنوك والفائدة والكحول والمقامرة. ليس تصنيفاً شرعياً نهائياً — راجع Zoya أو Musaffa.</div>
+    <div class="score-box"><strong>درجة الجاهزية:</strong> ارتفاع يومي + حجم عالي = أولوية دخول.</div>
     <div class="table-wrap" id="list">
-      <div class="loading" id="loading">
-        <div class="spinner"></div>
-        جاري تحليل الجاهزية...
-      </div>
-      <table id="stockTable" style="display:none">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>الرمز / الشركة</th>
-            <th>السعر</th>
-            <th>التغير %</th>
-            <th>درجة الجاهزية</th>
-            <th class="hide-sm">الحجم</th>
-            <th class="hide-sm">التوصية</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
+      <div class="loading" id="loading"><div class="spinner"></div>جاري التحليل...</div>
+      <table id="stockTable" style="display:none"><thead><tr>
+        <th>#</th><th>الرمز</th><th>السعر</th><th>التغير %</th><th>الجاهزية</th><th class="hide-sm">الحجم</th><th class="hide-sm">التوصية</th>
+      </tr></thead><tbody id="tbody"></tbody></table>
     </div>
-
-    <section class="how" id="how">
-      <h2>معايير "جاهز للدخول"</h2>
-      <div class="how-grid">
-        <div class="how-item">
-          <strong>1. زخم صاعد واضح</strong> — نسبة تغير يومي إيجابية (يفضل +2% فأكثر). السهم الذي يرتفع مع حجم جيد غالباً يستمر أو يعطي فرصة دخول.
-        </div>
-        <div class="how-item">
-          <strong>2. سيولة كافية</strong> — حجم تداول مرتفع يقلل الانزلاق ويسهل الدخول والخروج بسرعة.
-        </div>
-        <div class="how-item">
-          <strong>3. درجة الجاهزية</strong> — معادلة بسيطة: (نسبة الارتفاع × وزن) + (الحجم النسبي). الأعلى = أولوية توصية.
-        </div>
-        <div class="how-item">
-          <strong>4. تجنب الضعيف</strong> — الأسهم الهابطة بقوة أو بحجم ضعيف تُصنَّف "مراقبة" أو "تجنب" حالياً.
-        </div>
-      </div>
+    <section class="how" id="how"><h2>معايير الاختيار</h2>
+      <div class="how-item"><strong>1. حلال</strong> — استبعاد بنوك وتمويل بفائدة وكحول ومقامرة.</div>
+      <div class="how-item"><strong>2. زخم صاعد</strong> — تغير إيجابي يفضل +1% فأكثر.</div>
+      <div class="how-item"><strong>3. سيولة</strong> — حجم كافٍ للدخول والخروج.</div>
+      <div class="how-item"><strong>4. درجة الجاهزية</strong> — الأعلى = أولوية توصية.</div>
     </section>
-
-    <div class="disclaimer">
-      <strong>⚠️ تنويه مهم:</strong>
-      هذه إشارات تعليمية مبنية على بيانات يومية فقط (زخم + حجم). ليست نصائح استثمارية.
-      الأسهم بين 1$–5$ عالية المخاطر جداً. استخدم وقف خسارة دائماً ولا تدخل بأكثر من 1–2% من رأس المال.
-    </div>
+    <div class="disclaimer"><strong>⚠️ تنويه:</strong> الفلتر أولي وليس فتوى. الأسهم منخفضة السعر عالية المخاطر. إشارات تعليمية فقط.</div>
   </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 توصيات دخول أسهم منخفضة السعر</p>
-      <p style="margin-top:0.25rem;font-size:0.78rem">بيانات Yahoo Finance • تحديث كل دقيقة</p>
-    </div>
-  </footer>
-
+  <footer><div class="container"><p>© 2026 توصيات دخول أسهم حلال</p></div></footer>
   <script>
-    // Seed (fallback) — ranked roughly by readiness
-    const SEED = [
-      {"symbol":"KEEL","name":"Keel Infrastructure Corp.","price":3.35,"change":7.72,"volume":37163421,"marketCap":2068870144},
-      {"symbol":"DNN","name":"Denison Mines Corp","price":3.41,"change":5.90,"volume":30706563,"marketCap":3086928384},
-      {"symbol":"FRMI","name":"Fermi Inc.","price":4.86,"change":1.89,"volume":10977918,"marketCap":3112671232},
-      {"symbol":"ABEV","name":"Ambev S.A.","price":3.04,"change":1.67,"volume":20297959,"marketCap":46876794880},
-      {"symbol":"OPEN","name":"Opendoor Technologies Inc","price":3.13,"change":1.29,"volume":21750864,"marketCap":3039515136},
-      {"symbol":"PLUG","name":"Plug Power, Inc.","price":2.11,"change":0.96,"volume":41723255,"marketCap":2948081920},
-      {"symbol":"UWMC","name":"UWM Holdings Corporation","price":1.46,"change":0.69,"volume":12395848,"marketCap":4184347648},
-      {"symbol":"BBD","name":"Banco Bradesco Sa","price":3.46,"change":0.40,"volume":42591616,"marketCap":36638552064},
-      {"symbol":"NIO","name":"NIO Inc.","price":3.86,"change":0.00,"volume":62870351,"marketCap":9671874560},
-      {"symbol":"GGB","name":"Gerdau S.A.","price":4.95,"change":-0.40,"volume":12793847,"marketCap":9712525312},
-      {"symbol":"MPT","name":"Medical Properties Trust","price":4.04,"change":-0.49,"volume":8870728,"marketCap":2412687872},
-      {"symbol":"BTE","name":"Baytex Energy Corp","price":4.95,"change":-2.37,"volume":24529170,"marketCap":3461039872},
-      {"symbol":"GRAB","name":"Grab Holdings Limited","price":3.42,"change":-3.12,"volume":32918718,"marketCap":13992252416},
-      {"symbol":"AMC","name":"AMC Entertainment Holdings","price":2.54,"change":-3.79,"volume":24371116,"marketCap":2267215616}
+    const SEED=[
+      {symbol:"NIO",name:"NIO Inc.",price:3.86,change:0,volume:62870351},
+      {symbol:"PLUG",name:"Plug Power Inc.",price:2.11,change:0.96,volume:41723255},
+      {symbol:"KEEL",name:"Keel Infrastructure Corp.",price:3.35,change:7.72,volume:37163421},
+      {symbol:"GRAB",name:"Grab Holdings Limited",price:3.42,change:-3.12,volume:32918718},
+      {symbol:"DNN",name:"Denison Mines Corp.",price:3.41,change:5.9,volume:30706563},
+      {symbol:"BTE",name:"Baytex Energy Corp.",price:4.95,change:-2.37,volume:24529170},
+      {symbol:"AMC",name:"AMC Entertainment Holdings",price:2.54,change:-3.79,volume:24371116},
+      {symbol:"OPEN",name:"Opendoor Technologies Inc.",price:3.13,change:1.29,volume:21750864},
+      {symbol:"JBLU",name:"JetBlue Airways Corporation",price:4.61,change:-1.5,volume:16305587},
+      {symbol:"GGB",name:"Gerdau S.A.",price:4.95,change:-0.4,volume:12793847},
+      {symbol:"LCID",name:"Lucid Group, Inc.",price:4.6,change:-2,volume:11142182},
+      {symbol:"FRMI",name:"Fermi Inc.",price:4.86,change:1.89,volume:10977918},
+      {symbol:"EVGO",name:"EVgo, Inc.",price:1.44,change:0.35,volume:9292986},
+      {symbol:"MPT",name:"Medical Properties Trust",price:4.04,change:-0.49,volume:8870728},
+      {symbol:"LAC",name:"Lithium Americas Corp.",price:2.97,change:-1.2,volume:6971498},
+      {symbol:"SPCE",name:"Virgin Galactic Holdings",price:2.96,change:-1.33,volume:5283033},
+      {symbol:"ARRY",name:"Array Technologies, Inc.",price:4.54,change:-2.78,volume:3666983},
+      {symbol:"CLOV",name:"Clover Health Investments",price:4.25,change:0.59,volume:2945409},
+      {symbol:"HYLN",name:"Hyliion Holdings Corp.",price:3.66,change:7.33,volume:1163942},
+      {symbol:"BBD",name:"Banco Bradesco S.A.",price:3.46,change:0.4,volume:42591616},
+      {symbol:"ABEV",name:"Ambev S.A.",price:3.04,change:1.67,volume:20297959},
+      {symbol:"UWMC",name:"UWM Holdings Corporation",price:1.46,change:0.69,volume:12395848}
     ];
-
-    let stocks = [...SEED];
-    let currentSort = 'ready';
-
-    // Ready Score: prioritizes upward momentum + liquidity
-    function readyScore(s) {
-      const chg = s.change || 0;
-      const volM = (s.volume || 0) / 1e6;
-      let score = (chg * 4) + Math.min(volM * 0.35, 8);
-      if (chg >= 5) score += 6;
-      else if (chg >= 2) score += 3;
-      else if (chg >= 0.5) score += 1;
-      if (chg < 0) score -= Math.abs(chg) * 1.5;
-      return Math.round(score * 10) / 10;
-    }
-
-    function signal(s) {
-      if (s.change >= 2 && s.volume >= 8e6) return 'entry';
-      if (s.change >= 0.5 && s.volume >= 5e6) return 'entry';
-      if (s.change >= 0) return 'watch';
-      return 'avoid';
-    }
-
-    function signalLabel(sig) {
-      if (sig === 'entry') return '<span class="badge entry">توصية دخول</span>';
-      if (sig === 'watch') return '<span class="badge watch">مراقبة</span>';
-      return '<span class="badge avoid">تجنب الآن</span>';
-    }
-
-    function formatVol(v) {
-      if (v >= 1e6) return (v/1e6).toFixed(1) + 'M';
-      if (v >= 1e3) return (v/1e3).toFixed(0) + 'K';
-      return String(v);
-    }
-
-    function sortStocks(list, by) {
-      const arr = list.map(s => ({ ...s, _score: readyScore(s), _sig: signal(s) }));
-      if (by === 'ready') arr.sort((a,b) => b._score - a._score);
-      else if (by === 'change') arr.sort((a,b) => b.change - a.change);
-      else if (by === 'volume') arr.sort((a,b) => b.volume - a.volume);
-      else if (by === 'price') arr.sort((a,b) => a.price - b.price);
-      return arr;
-    }
-
-    function render() {
-      const sorted = sortStocks(stocks, currentSort);
-      const tbody = document.getElementById('tbody');
-      tbody.innerHTML = sorted.map((s, i) => {
-        const rank = i + 1;
-        const up = s.change >= 0;
-        const isTop = s._sig === 'entry' && rank <= 5;
-        const scoreClass = s._score >= 12 ? 'high' : (s._score >= 4 ? 'mid' : 'low');
-        return `
-          <tr class="${s._sig === 'entry' ? 'ready' : ''}">
-            <td><span class="rank ${isTop ? 'top' : ''}">${rank}</span></td>
-            <td>
-              <span class="sym">${s.symbol}</span>
-              <span class="name">${s.name}</span>
-            </td>
-            <td class="price">$${s.price.toFixed(2)}</td>
-            <td><span class="chg ${up ? 'up' : 'down'}">${up ? '+' : ''}${s.change.toFixed(2)}%</span></td>
-            <td><span class="score ${scoreClass}">${s._score}</span></td>
-            <td class="vol hide-sm">${formatVol(s.volume)}</td>
-            <td class="hide-sm">${signalLabel(s._sig)}</td>
-          </tr>
-        `;
-      }).join('');
-
-      document.getElementById('statCount').textContent = stocks.length;
-      const readyCount = stocks.filter(s => signal(s) === 'entry').length;
-      document.getElementById('statReady').textContent = readyCount;
-      const best = Math.max(...stocks.map(s => s.change));
-      document.getElementById('statBest').textContent = (best >= 0 ? '+' : '') + best.toFixed(2) + '%';
-    }
-
-    async function fetchLive() {
-      try {
-        const url = 'https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=most_actives&count=250';
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('network');
-        const data = await res.json();
-        const quotes = data?.finance?.result?.[0]?.quotes || [];
-        const low = quotes
-          .filter(q => {
-            const p = q.regularMarketPrice;
-            return p != null && p >= 1 && p <= 5;
-          })
-          .map(q => ({
-            symbol: q.symbol,
-            name: q.shortName || q.longName || q.symbol,
-            price: +q.regularMarketPrice,
-            change: +(q.regularMarketChangePercent || 0),
-            volume: q.regularMarketVolume || 0,
-            marketCap: q.marketCap || 0
-          }));
-
-        if (low.length >= 5) {
-          stocks = low;
-          document.getElementById('statTime').textContent = new Date().toLocaleTimeString('ar-EG');
-        } else {
-          document.getElementById('statTime').textContent = 'بيانات محفوظة';
-        }
-      } catch (e) {
-        console.warn('Live fetch failed', e);
-        document.getElementById('statTime').textContent = 'بيانات محفوظة';
-      }
-
-      document.getElementById('loading').style.display = 'none';
-      document.getElementById('stockTable').style.display = 'table';
-      render();
-    }
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentSort = btn.dataset.sort;
-        render();
-      });
-    });
-
-    fetchLive();
-    setInterval(fetchLive, 60000);
+    const HARAM_SYMBOLS=new Set(["BBD","ABEV","UWMC","ITUB","SOFI","HOOD","AFRM","UPST","BAC","JPM","C","WFC"]);
+    const HARAM_KEYWORDS=["bank","banco","beer","alcohol","brew","wine","liquor","casino","gambling","tobacco","mortgage","lending","lender","pork","weapon","firearm","adult"];
+    function isHalal(s){if(HARAM_SYMBOLS.has((s.symbol||"").toUpperCase()))return false;const n=(s.name||"").toLowerCase();return !HARAM_KEYWORDS.some(k=>n.includes(k));}
+    let stocks=SEED.filter(isHalal), currentSort="ready";
+    function readyScore(s){const c=s.change||0,v=(s.volume||0)/1e6;let sc=c*4+Math.min(v*.35,8);if(c>=5)sc+=6;else if(c>=2)sc+=3;else if(c>=.5)sc+=1;if(c<0)sc-=Math.abs(c)*1.5;return Math.round(sc*10)/10;}
+    function signal(s){if(s.change>=2&&s.volume>=5e6)return"entry";if(s.change>=.5&&s.volume>=3e6)return"entry";if(s.change>=0)return"watch";return"avoid";}
+    function signalLabel(sig){if(sig==="entry")return'<span class="badge entry">توصية دخول</span>';if(sig==="watch")return'<span class="badge watch">مراقبة</span>';return'<span class="badge avoid">تجنب الآن</span>';}
+    function formatVol(v){if(v>=1e6)return(v/1e6).toFixed(1)+"M";if(v>=1e3)return(v/1e3).toFixed(0)+"K";return String(v);}
+    function sortStocks(list,by){const arr=list.map(s=>({...s,_score:readyScore(s),_sig:signal(s)}));if(by==="ready")arr.sort((a,b)=>b._score-a._score);else if(by==="change")arr.sort((a,b)=>b.change-a.change);else if(by==="volume")arr.sort((a,b)=>b.volume-a.volume);else if(by==="price")arr.sort((a,b)=>a.price-b.price);return arr;}
+    function render(){const sorted=sortStocks(stocks,currentSort);document.getElementById("tbody").innerHTML=sorted.map((s,i)=>{const rank=i+1,up=s.change>=0,isTop=s._sig==="entry"&&rank<=5,sc=s._score>=12?"high":s._score>=4?"mid":"low";return`<tr class="${s._sig==="entry"?"ready":""}"><td><span class="rank ${isTop?"top":""}">${rank}</span></td><td><span class="sym">${s.symbol}</span> <span class="badge halal">حلال</span><span class="name">${s.name}</span></td><td>$${s.price.toFixed(2)}</td><td><span class="chg ${up?"up":"down"}">${up?"+":""}${s.change.toFixed(2)}%</span></td><td><span class="score ${sc}">${s._score}</span></td><td class="hide-sm">${formatVol(s.volume)}</td><td class="hide-sm">${signalLabel(s._sig)}</td></tr>`;}).join("");document.getElementById("statCount").textContent=stocks.length;document.getElementById("statReady").textContent=stocks.filter(s=>signal(s)==="entry").length;const best=stocks.length?Math.max(...stocks.map(s=>s.change)):0;document.getElementById("statBest").textContent=(best>=0?"+":"")+best.toFixed(2)+"%";}
+    async function fetchLive(){try{const res=await fetch("https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=most_actives&count=250");if(!res.ok)throw new Error("net");const data=await res.json();const quotes=data?.finance?.result?.[0]?.quotes||[];const live=quotes.filter(q=>{const p=q.regularMarketPrice;return p!=null&&p>=1&&p<=5;}).map(q=>({symbol:q.symbol,name:q.shortName||q.longName||q.symbol,price:+q.regularMarketPrice,change:+(q.regularMarketChangePercent||0),volume:q.regularMarketVolume||0}));const map=new Map();SEED.forEach(s=>map.set(s.symbol,s));live.forEach(s=>map.set(s.symbol,s));const merged=[...map.values()].filter(isHalal);if(merged.length>=5){stocks=merged;document.getElementById("statTime").textContent=new Date().toLocaleTimeString("ar-EG");}else{stocks=SEED.filter(isHalal);document.getElementById("statTime").textContent="بيانات محفوظة";}}catch(e){stocks=SEED.filter(isHalal);document.getElementById("statTime").textContent="بيانات محفوظة";}document.getElementById("loading").style.display="none";document.getElementById("stockTable").style.display="table";render();}
+    document.querySelectorAll(".filter-btn").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");currentSort=btn.dataset.sort;render();}));
+    fetchLive();setInterval(fetchLive,60000);
   </script>
 </body>
 </html>

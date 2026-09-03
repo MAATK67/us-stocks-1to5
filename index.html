@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أفضل الأسهم الأمريكية من 1$ إلى 5$ | مرتبة حسب الأفضلية</title>
+  <meta name="description" content="قائمة أفضل الأسهم الأمريكية بين 1 و5 دولار مرتبة حسب السيولة والأداء" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e13;
+      --card: #12181f;
+      --border: #1e2836;
+      --gold: #d4af37;
+      --gold-l: #f0d78c;
+      --green: #22c55e;
+      --red: #ef4444;
+      --blue: #3b82f6;
+      --text: #eef2f7;
+      --muted: #8b9bb0;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+    header {
+      background: rgba(10,14,19,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 800; font-size: 1.2rem; color: var(--gold);
+      text-decoration: none; display: flex; align-items: center; gap: 0.4rem;
+    }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+    .nav a:hover { color: var(--gold); }
+
+    .hero {
+      text-align: center; padding: 2rem 0 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800;
+      background: linear-gradient(90deg, var(--gold-l), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 0.4rem;
+    }
+    .hero p { color: var(--muted); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+
+    .filters {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .filter-btn {
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); padding: 0.45rem 1rem; border-radius: 999px;
+      font-family: inherit; font-weight: 600; font-size: 0.88rem; cursor: pointer;
+      transition: 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: rgba(212,175,55,0.15); border-color: rgba(212,175,55,0.4);
+      color: var(--gold);
+    }
+
+    .stats-bar {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      gap: 0.75rem; margin-bottom: 1.5rem;
+    }
+    .stat-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.9rem; text-align: center;
+    }
+    .stat-box span { display: block; font-size: 0.78rem; color: var(--muted); }
+    .stat-box strong { font-size: 1.2rem; color: var(--gold-l); }
+
+    .table-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; margin-bottom: 2rem;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th {
+      background: #0f141b; color: var(--muted); font-weight: 700;
+      text-align: right; padding: 0.85rem 1rem; font-size: 0.82rem;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 0.9rem 1rem; border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .rank {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.85rem;
+      background: linear-gradient(135deg, var(--gold), #b8941f);
+      color: #0a0e13;
+    }
+    .rank.top3 { box-shadow: 0 0 12px rgba(212,175,55,0.35); }
+    .sym {
+      font-weight: 800; color: var(--gold-l); font-size: 1rem;
+    }
+    .name { color: var(--muted); font-size: 0.82rem; display: block; }
+    .price { font-weight: 700; font-size: 1.05rem; }
+    .chg {
+      font-weight: 700; padding: 0.25rem 0.55rem; border-radius: 7px; font-size: 0.88rem;
+    }
+    .chg.up { background: rgba(34,197,94,0.15); color: var(--green); }
+    .chg.down { background: rgba(239,68,68,0.15); color: var(--red); }
+    .vol { font-variant-numeric: tabular-nums; color: var(--text); }
+    .mcap { color: var(--muted); font-size: 0.88rem; }
+
+    .badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.15rem 0.45rem; border-radius: 5px; margin-right: 0.3rem;
+    }
+    .badge.best { background: rgba(212,175,55,0.2); color: var(--gold); }
+    .badge.hot { background: rgba(239,68,68,0.15); color: #f87171; }
+
+    .note {
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 12px; padding: 1rem 1.2rem; font-size: 0.88rem;
+      color: #93c5fd; margin-bottom: 1.5rem;
+    }
+
+    .disclaimer {
+      background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.25);
+      border-radius: 12px; padding: 1.1rem; font-size: 0.85rem; color: #fca5a5;
+      margin: 1.5rem 0;
+    }
+    .disclaimer strong { color: #f87171; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 0;
+      text-align: center; color: var(--muted); font-size: 0.85rem;
+    }
+
+    .loading {
+      text-align: center; padding: 2.5rem; color: var(--muted);
+    }
+    .spinner {
+      width: 36px; height: 36px; border: 3px solid var(--border);
+      border-top-color: var(--gold); border-radius: 50%;
+      animation: spin 0.8s linear infinite; margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 700px) {
+      .hide-sm { display: none; }
+      td, th { padding: 0.7rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="logo">📈 أسهم منخفضة السعر</a>
+        <div style="display:flex;gap:1.2rem;">
+          <a href="#list">القائمة</a>
+          <a href="#how">كيف نرتب؟</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1>أفضل الأسهم الأمريكية من 1$ إلى 5$</h1>
+      <p>مرتبة حسب السيولة (الحجم) ثم الأداء اليومي — البيانات من Yahoo Finance</p>
+    </div>
+
+    <div class="filters">
+      <button class="filter-btn active" data-sort="volume">الأعلى سيولة</button>
+      <button class="filter-btn" data-sort="change">الأعلى ارتفاعاً</button>
+      <button class="filter-btn" data-sort="mcap">الأعلى قيمة سوقية</button>
+      <button class="filter-btn" data-sort="price">الأرخص أولاً</button>
+    </div>
+
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-box"><span>عدد الأسهم</span><strong id="statCount">—</strong></div>
+      <div class="stat-box"><span>متوسط السعر</span><strong id="statAvg">—</strong></div>
+      <div class="stat-box"><span>أعلى ارتفاع</span><strong id="statBest" style="color:var(--green)">—</strong></div>
+      <div class="stat-box"><span>آخر تحديث</span><strong id="statTime" style="font-size:0.95rem">—</strong></div>
+    </div>
+
+    <div class="note">
+      <strong>معيار الترتيب الافتراضي:</strong> السيولة (حجم التداول) هي الأهم للأسهم بين 1–5 دولار، لأنها تقلل الانزلاق وتسهل الدخول والخروج. ثم ننظر لنسبة التغير اليومي.
+    </div>
+
+    <div class="table-wrap" id="list">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        جاري جلب البيانات...
+      </div>
+      <table id="stockTable" style="display:none">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>الرمز / الشركة</th>
+            <th>السعر</th>
+            <th>التغير %</th>
+            <th class="hide-sm">الحجم</th>
+            <th class="hide-sm">القيمة السوقية</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <section id="how" style="padding:1.5rem 0 0.5rem">
+      <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:0.75rem;color:var(--gold-l)">كيف نختار "الأفضل"؟</h2>
+      <div style="display:grid;gap:0.7rem;font-size:0.92rem;color:var(--muted)">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem">
+          <strong style="color:var(--gold)">1. السيولة أولاً</strong> — حجم تداول عالي يعني سهولة البيع والشراء بدون فرق سعر كبير.
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem">
+          <strong style="color:var(--gold)">2. الأداء اليومي</strong> — الأسهم التي ترتفع بقوة مع حجم جيد تكون أكثر جاذبية.
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem">
+          <strong style="color:var(--gold)">3. القيمة السوقية</strong> — الشركات الأكبر نسبياً داخل هذا النطاق غالباً أكثر استقراراً من الأسهم الصغيرة جداً.
+        </div>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>⚠️ تنويه:</strong>
+      هذا الموقع لأغراض تعليمية فقط. الأسهم منخفضة السعر تنطوي على مخاطر عالية جداً (تقلبات حادة، سيولة متغيرة، أخبار مفاجئة).
+      القائمة ليست توصية شراء أو بيع. استشر مستشاراً مالياً مرخصاً قبل أي قرار.
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 أسهم منخفضة السعر — بيانات من Yahoo Finance</p>
+      <p style="margin-top:0.3rem;font-size:0.78rem">التحديث التلقائي كل دقيقة • النطاق: 1$ – 5$</p>
+    </div>
+  </footer>
+
+  <script>
+    // Seed data (fallback if live fetch fails)
+    const SEED = [
+      {"rank":1,"symbol":"NIO","name":"NIO Inc.","price":3.86,"change":0,"volume":62870351,"marketCap":9671874560},
+      {"rank":2,"symbol":"BBD","name":"Banco Bradesco Sa","price":3.46,"change":0.4,"volume":42591616,"marketCap":36638552064},
+      {"rank":3,"symbol":"PLUG","name":"Plug Power, Inc.","price":2.11,"change":0.96,"volume":41723255,"marketCap":2948081920},
+      {"rank":4,"symbol":"KEEL","name":"Keel Infrastructure Corp.","price":3.35,"change":7.72,"volume":37163421,"marketCap":2068870144},
+      {"rank":5,"symbol":"GRAB","name":"Grab Holdings Limited","price":3.42,"change":-3.12,"volume":32918718,"marketCap":13992252416},
+      {"rank":6,"symbol":"DNN","name":"Denison Mines Corp","price":3.41,"change":5.9,"volume":30706563,"marketCap":3086928384},
+      {"rank":7,"symbol":"BTE","name":"Baytex Energy Corp","price":4.95,"change":-2.37,"volume":24529170,"marketCap":3461039872},
+      {"rank":8,"symbol":"AMC","name":"AMC Entertainment Holdings","price":2.54,"change":-3.79,"volume":24371116,"marketCap":2267215616},
+      {"rank":9,"symbol":"OPEN","name":"Opendoor Technologies Inc","price":3.13,"change":1.29,"volume":21750864,"marketCap":3039515136},
+      {"rank":10,"symbol":"ABEV","name":"Ambev S.A.","price":3.04,"change":1.67,"volume":20297959,"marketCap":46876794880},
+      {"rank":11,"symbol":"GGB","name":"Gerdau S.A.","price":4.95,"change":-0.4,"volume":12793847,"marketCap":9712525312},
+      {"rank":12,"symbol":"UWMC","name":"UWM Holdings Corporation","price":1.46,"change":0.69,"volume":12395848,"marketCap":4184347648},
+      {"rank":13,"symbol":"FRMI","name":"Fermi Inc.","price":4.86,"change":1.89,"volume":10977918,"marketCap":3112671232},
+      {"rank":14,"symbol":"MPT","name":"Medical Properties Trust","price":4.04,"change":-0.49,"volume":8870728,"marketCap":2412687872}
+    ];
+
+    let stocks = [...SEED];
+    let currentSort = 'volume';
+
+    function formatVol(v) {
+      if (v >= 1e6) return (v/1e6).toFixed(1) + 'M';
+      if (v >= 1e3) return (v/1e3).toFixed(0) + 'K';
+      return v.toString();
+    }
+    function formatMcap(v) {
+      if (!v) return '—';
+      if (v >= 1e9) return (v/1e9).toFixed(2) + 'B';
+      if (v >= 1e6) return (v/1e6).toFixed(0) + 'M';
+      return v.toString();
+    }
+
+    function sortStocks(list, by) {
+      const arr = [...list];
+      if (by === 'volume') arr.sort((a,b) => b.volume - a.volume);
+      else if (by === 'change') arr.sort((a,b) => b.change - a.change);
+      else if (by === 'mcap') arr.sort((a,b) => b.marketCap - a.marketCap);
+      else if (by === 'price') arr.sort((a,b) => a.price - b.price);
+      return arr;
+    }
+
+    function render() {
+      const sorted = sortStocks(stocks, currentSort);
+      const tbody = document.getElementById('tbody');
+      tbody.innerHTML = sorted.map((s, i) => {
+        const rank = i + 1;
+        const up = s.change >= 0;
+        const isTop = rank <= 3;
+        const isHot = s.change >= 5;
+        return `
+          <tr>
+            <td><span class="rank ${isTop ? 'top3' : ''}">${rank}</span></td>
+            <td>
+              <span class="sym">${s.symbol}</span>
+              ${isTop ? '<span class="badge best">أفضل</span>' : ''}
+              ${isHot ? '<span class="badge hot">قوي</span>' : ''}
+              <span class="name">${s.name}</span>
+            </td>
+            <td class="price">$${s.price.toFixed(2)}</td>
+            <td><span class="chg ${up ? 'up' : 'down'}">${up ? '+' : ''}${s.change.toFixed(2)}%</span></td>
+            <td class="vol hide-sm">${formatVol(s.volume)}</td>
+            <td class="mcap hide-sm">${formatMcap(s.marketCap)}</td>
+          </tr>
+        `;
+      }).join('');
+
+      // stats
+      document.getElementById('statCount').textContent = stocks.length;
+      const avg = stocks.reduce((a,s) => a + s.price, 0) / stocks.length;
+      document.getElementById('statAvg').textContent = '$' + avg.toFixed(2);
+      const best = Math.max(...stocks.map(s => s.change));
+      document.getElementById('statBest').textContent = (best >= 0 ? '+' : '') + best.toFixed(2) + '%';
+    }
+
+    async function fetchLive() {
+      try {
+        const url = 'https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=most_actives&count=250';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('network');
+        const data = await res.json();
+        const quotes = data?.finance?.result?.[0]?.quotes || [];
+        const low = quotes
+          .filter(q => {
+            const p = q.regularMarketPrice;
+            return p != null && p >= 1 && p <= 5;
+          })
+          .map(q => ({
+            symbol: q.symbol,
+            name: q.shortName || q.longName || q.symbol,
+            price: +q.regularMarketPrice,
+            change: +(q.regularMarketChangePercent || 0),
+            volume: q.regularMarketVolume || 0,
+            marketCap: q.marketCap || 0
+          }));
+
+        if (low.length >= 5) {
+          stocks = low;
+          document.getElementById('statTime').textContent = new Date().toLocaleTimeString('ar-EG');
+        } else {
+          document.getElementById('statTime').textContent = 'بيانات محفوظة';
+        }
+      } catch (e) {
+        console.warn('Live fetch failed, using seed', e);
+        document.getElementById('statTime').textContent = 'بيانات محفوظة';
+      }
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('stockTable').style.display = 'table';
+      render();
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentSort = btn.dataset.sort;
+        render();
+      });
+    });
+
+    fetchLive();
+    setInterval(fetchLive, 60000);
+  </script>
+</body>
+</html>

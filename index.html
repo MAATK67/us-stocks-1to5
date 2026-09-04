@@ -61,7 +61,7 @@ footer{border-top:1px solid var(--border);padding:1.2rem 0;text-align:center;col
 </nav></div></header>
 <main class="container">
 <div class="hero"><h1>أسهم حلال من أقل من 1$ حتى 5$</h1>
-<p>أهداف أوضح وأبعد · وقف خسارة · تسجيل صفقة</p></div>
+<p>تحديث كل 5 ثوانٍ · أهداف أوضح · تسجيل صفقة</p></div>
 <div class="filters">
 <button class="filter-btn active" data-sort="ready">جاهز للدخول ★</button>
 <button class="filter-btn" data-sort="change">الأعلى ارتفاعاً</button>
@@ -74,7 +74,7 @@ footer{border-top:1px solid var(--border);padding:1.2rem 0;text-align:center;col
 <div class="stat-box"><span>صفقاتي</span><strong id="statTrades">0</strong></div>
 <div class="stat-box"><span>آخر تحديث</span><strong id="statTime" style="font-size:.85rem">—</strong></div>
 </div>
-<div class="note"><strong>الهدف بعد التصحيح:</strong> توصية دخول ≈ <b>+22% إلى +35%</b> (وحتى <b>+43%</b> للأسهم تحت 1$) · وقف خسارة ≈ −9% إلى −12%</div>
+<div class="note"><strong>تحديث حي كل 5 ثوانٍ</strong> · الهدف ≈ +22% إلى +35% (وحتى +43% تحت 1$) · وقف ≈ −9% إلى −12%</div>
 <div class="trades-panel" id="trades"><h3>📋 صفقاتي المسجّلة</h3>
 <div id="tradesList"><div class="empty-trades">لا توجد صفقات مسجّلة بعد</div></div></div>
 <div class="table-wrap" id="list">
@@ -84,7 +84,7 @@ footer{border-top:1px solid var(--border);padding:1.2rem 0;text-align:center;col
 <tbody id="tbody"></tbody></table></div>
 <div class="disclaimer"><strong>⚠️ تنويه:</strong> الأهداف تقديرية تعليمية. الأسهم الرخيصة عالية المخاطر جداً.</div>
 </main>
-<footer><div class="container"><p>© 2026 توصيات دخول حلال</p></div></footer>
+<footer><div class="container"><p>© 2026 توصيات دخول حلال · تحديث كل 5 ثوانٍ</p></div></footer>
 <script>
 const SEED=[{symbol:"NIO",name:"NIO Inc.",price:3.86,change:0,volume:62870351},{symbol:"PLUG",name:"Plug Power Inc.",price:2.11,change:0.96,volume:41723255},{symbol:"KEEL",name:"Keel Infrastructure Corp.",price:3.35,change:7.72,volume:37163421},{symbol:"GRAB",name:"Grab Holdings Limited",price:3.42,change:-3.12,volume:32918718},{symbol:"DNN",name:"Denison Mines Corp.",price:3.41,change:5.9,volume:30706563},{symbol:"BTE",name:"Baytex Energy Corp.",price:4.95,change:2.7,volume:24529170},{symbol:"AMC",name:"AMC Entertainment Holdings",price:2.54,change:-3.79,volume:24371116},{symbol:"OPEN",name:"Opendoor Technologies Inc.",price:3.13,change:1.29,volume:21750864},{symbol:"JBLU",name:"JetBlue Airways",price:4.61,change:-1.5,volume:16305587},{symbol:"GGB",name:"Gerdau S.A.",price:4.95,change:5.32,volume:12793847},{symbol:"LCID",name:"Lucid Group, Inc.",price:4.6,change:-2,volume:11142182},{symbol:"FRMI",name:"Fermi Inc.",price:4.86,change:1.89,volume:10977918},{symbol:"EVGO",name:"EVgo, Inc.",price:1.44,change:0.35,volume:9292986},{symbol:"MPT",name:"Medical Properties Trust",price:4.04,change:0.25,volume:8870728},{symbol:"LAC",name:"Lithium Americas Corp.",price:2.97,change:-1.2,volume:6971498},{symbol:"SPCE",name:"Virgin Galactic Holdings",price:2.96,change:-1.33,volume:5283033},{symbol:"NNDM",name:"Nano Dimension Ltd.",price:1.6,change:1.27,volume:3834991},{symbol:"ARRY",name:"Array Technologies",price:4.54,change:-2.78,volume:3666983},{symbol:"CLOV",name:"Clover Health Investments",price:4.25,change:0.59,volume:2945409},{symbol:"BLNK",name:"Blink Charging Co.",price:0.594,change:3.06,volume:2568306},{symbol:"OCGN",name:"Ocugen, Inc.",price:1.35,change:-1.46,volume:2411672},{symbol:"ATER",name:"Aterian, Inc.",price:0.618,change:57.65,volume:1674551},{symbol:"SNDL",name:"SNDL Inc.",price:1.41,change:4.44,volume:1294949},{symbol:"HYLN",name:"Hyliion Holdings Corp.",price:3.66,change:7.33,volume:1163942},{symbol:"CTXR",name:"Citius Pharmaceuticals",price:0.602,change:-4.29,volume:250403},{symbol:"BNGO",name:"Bionano Genomics, Inc.",price:1.24,change:2.48,volume:191507},{symbol:"VXRT",name:"Vaxart, Inc.",price:0.492,change:-1.5,volume:116466},{symbol:"TOPS",name:"Top Ships Inc.",price:0.755,change:-4.42,volume:24510},{symbol:"PHUN",name:"Phunware, Inc.",price:2.08,change:-1.18,volume:30038},{symbol:"BBD",name:"Banco Bradesco S.A.",price:3.46,change:0.4,volume:42591616},{symbol:"ABEV",name:"Ambev S.A.",price:3.04,change:1.67,volume:20297959},{symbol:"UWMC",name:"UWM Holdings Corporation",price:1.46,change:0.69,volume:12395848}];
 const HARAM_SYMBOLS=new Set(["BBD","ABEV","UWMC","ITUB","SOFI","HOOD","AFRM","UPST","BAC","JPM","C","WFC"]);
@@ -118,28 +118,6 @@ function fmtPrice(p){return p<1?p.toFixed(3):p.toFixed(2)}
 function render(){
  const sorted=sortStocks(stocks,currentSort);
  const registered=new Set(loadTrades().map(t=>t.symbol));
- document.getElementById("tbody").innerHTML=sorted.map((s,i)=>{
-  const rank=i+1,up=s.change>=0,isTop=s._sig==="entry"&&rank<=5,lv=s._lv;
-  const tpHtml=lv.tp?`<span class="tp">$${lv.tp}</span><br><span style="font-size:.7rem;color:var(--muted)">+${lv.tpPct}%</span>`:"—";
-  const slHtml=lv.sl?`<span class="sl">$${lv.sl}</span><br><span style="font-size:.7rem;color:var(--muted)">-${lv.slPct}%</span>`:"—";
-  const btn=registered.has(s.symbol)?`<button class="btn-enter done" disabled>✓ مسجّل</button>`:(s._sig==="avoid"?`<button class="btn-enter done" disabled>—</button>`:`<button class="btn-enter" onclick='registerTrade(${JSON.stringify({symbol:s.symbol,name:s.name,price:s.price,change:s.change,volume:s.volume})})'>تسجيل الدخول</button>`);
-  const under=s.price<1?'<span class="badge under">أقل من 1$</span>':'';
-  return `<tr class="${s._sig==="entry"?"ready":""}"><td><span class="rank ${isTop?"top":""}">${rank}</span></td><td><span class="sym">${s.symbol}</span> <span class="badgehalal">حلال</span> ${under}<span class="name">${s.name}</span></td><td><strong>$${fmtPrice(s.price)}</strong></td><td><span class="chg ${up?"up":"down"}">${up?"+":""}${s.change.toFixed(2)}%</span></td><td>${tpHtml}</td><td>${slHtml}</td><td>${signalLabel(s._sig)}</td><td>${btn}</td></tr>`;
- }).join("").split("badgehalal").join("badgehalal");
- document.getElementById("tbody").innerHTML=document.getElementById("tbody").innerHTML.split("badgehalal").join("badgehalal");
- // correct two-class name
- document.getElementById("tbody").innerHTML=document.getElementById("tbody").innerHTML.replace(/badgehalal/g,"badgehalal");
- document.getElementById("tbody").innerHTML=document.getElementById("tbody").innerHTML.replace(/class="badgehalal"/g,'class="badgehalal"');
- document.getElementById("tbody").innerHTML=document.getElementById("tbody").innerHTML.replace(/badgehalal/g,'badgehalal');
- // FORCE correct: badge + space +halal
- document.getElementById("tbody").innerHTML=document.getElementById("tbody").innerHTML.split('badgehalal').join('badgehalal');
- document.getElementById("statCount").textContent=stocks.length;
- document.getElementById("statReady").textContent=stocks.filter(s=>signal(s)==="entry").length;
-}
-// override render cleanly without class bugs
-function render(){
- const sorted=sortStocks(stocks,currentSort);
- const registered=new Set(loadTrades().map(t=>t.symbol));
  let rows="";
  sorted.forEach((s,i)=>{
   const rank=i+1,up=s.change>=0,isTop=s._sig==="entry"&&rank<=5,lv=s._lv;
@@ -150,22 +128,16 @@ function render(){
   else if(s._sig==="avoid") btn="<button class=\"btn-enter done\" disabled>—</button>";
   else btn="<button class=\"btn-enter\" onclick='registerTrade("+JSON.stringify({symbol:s.symbol,name:s.name,price:s.price,change:s.change,volume:s.volume})+")'>تسجيل الدخول</button>";
   const under=s.price<1?"<span class=\"badge under\">أقل من 1$</span>":"";
-  rows+="<tr class=\""+(s._sig==="entry"?"ready":"")+"\"><td><span class=\"rank "+(isTop?"top":"")+"\">"+rank+"</span></td><td><span class=\"sym\">"+s.symbol+"</span> <span class=\"badgehalal\">حلال</span> "+under+"<span class=\"name\">"+s.name+"</span></td><td><strong>$"+fmtPrice(s.price)+"</strong></td><td><span class=\"chg "+(up?"up":"down")+"\">"+(up?"+":"")+s.change.toFixed(2)+"%</span></td><td>"+tpHtml+"</td><td>"+slHtml+"</td><td>"+signalLabel(s._sig)+"</td><td>"+btn+"</td></tr>";
+  rows+="<tr class=\""+(s._sig==="entry"?"ready":"")+"\"><td><span class=\"rank "+(isTop?"top":"")+"\">"+rank+"</span></td><td><span class=\"sym\">"+s.symbol+"</span> <span class=\"badge "+"halal\">حلال</span> "+under+"<span class=\"name\">"+s.name+"</span></td><td><strong>$"+fmtPrice(s.price)+"</strong></td><td><span class=\"chg "+(up?"up":"down")+"\">"+(up?"+":"")+s.change.toFixed(2)+"%</span></td><td>"+tpHtml+"</td><td>"+slHtml+"</td><td>"+signalLabel(s._sig)+"</td><td>"+btn+"</td></tr>";
  });
- // fix halal badge class to "badgehalal" -> two classes badge andhalal
- rows=rows.split("badgehalal").join("badgehalal");
- rows=rows.replace(/badgehalal/g,"badgehalal");
- rows=rows.split('class="badgehalal"').join('class="badgehalal"');
- rows=rows.split("badgehalal").join("badgehalal");
- // Explicit: replace the string badgehalal with badge + space +halal
- rows=rows.split("badgehalal").join("badge"+" "+"halal");
  document.getElementById("tbody").innerHTML=rows;
  document.getElementById("statCount").textContent=stocks.length;
  document.getElementById("statReady").textContent=stocks.filter(s=>signal(s)==="entry").length;
 }
 async function fetchLive(){try{const res=await fetch("https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved?formatted=false&lang=en-US&region=US&scrIds=most_actives&count=250");if(!res.ok)throw new Error("net");const data=await res.json();const quotes=data?.finance?.result?.[0]?.quotes||[];const live=quotes.filter(q=>{const p=q.regularMarketPrice;return p!=null&&p>=0.05&&p<=5}).map(q=>({symbol:q.symbol,name:q.shortName||q.longName||q.symbol,price:+q.regularMarketPrice,change:+(q.regularMarketChangePercent||0),volume:q.regularMarketVolume||0}));const map=new Map();SEED.forEach(s=>map.set(s.symbol,s));live.forEach(s=>map.set(s.symbol,s));const merged=[...map.values()].filter(s=>isHalal(s)&&s.price>=0.05&&s.price<=5);if(merged.length>=5){stocks=merged;document.getElementById("statTime").textContent=new Date().toLocaleTimeString("ar-EG")}else{stocks=SEED.filter(isHalal);document.getElementById("statTime").textContent="بيانات محفوظة"}}catch(e){stocks=SEED.filter(isHalal);document.getElementById("statTime").textContent="بيانات محفوظة"}document.getElementById("loading").style.display="none";document.getElementById("stockTable").style.display="table";render();renderTrades()}
 document.querySelectorAll(".filter-btn").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");currentSort=btn.dataset.sort;render()}));
-fetchLive();setInterval(fetchLive,60000);
+fetchLive();
+setInterval(fetchLive, 5000);
 </script>
 </body>
 </html>
